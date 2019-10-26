@@ -43,16 +43,16 @@ def main():
     updater = Updater(token=config.BOT_TOKEN)
     dp = updater.dispatcher
 
-    def stop_and_restart():
-        '''Gracefully stop the Updater and replace the current process with a new one'''
-        updater.stop()
-        os.execl(sys.executable, sys.executable, *sys.argv)
+    # def stop_and_restart():
+    #     '''Gracefully stop the Updater and replace the current process with a new one'''
+    #     updater.stop()
+    #     os.execl(sys.executable, sys.executable, *sys.argv)
 
-    def restart(bot, update):
-        update.message.reply_text('Bot is restarting...')
-        Thread(target=stop_and_restart).start()
+    # def restart(bot, update):
+    #     update.message.reply_text('Bot is restarting...')
+    #     Thread(target=stop_and_restart).start()
 
-    job = updater.job_queue
+    # job = updater.job_queue
     # dp.add_handler(MessageHandler(custom_filters.album,
     #                               albums.album_collect, pass_job_queue=True), 1)
     dp.add_handler(MessageHandler(
