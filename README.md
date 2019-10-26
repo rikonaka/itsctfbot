@@ -1,1 +1,3 @@
-# xboring_bot
+# xboring bot
+
+## Funny bot.

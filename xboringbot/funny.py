@@ -32,6 +32,7 @@ def check_verb(text):
         '持',
         '擦',
         '吃',
+        '猜',
         # d
         '盯',
         '瞪',
@@ -90,6 +91,7 @@ def check_verb(text):
         '撒',
         '搜',
         '睡',
+        '是',
         # t
         '眺',
         '推',
@@ -118,6 +120,8 @@ def check_verb(text):
         '撞',
         '揍',
         '做',
+        # sp
+        '404',
     ]
 
     for c in verb_list:
