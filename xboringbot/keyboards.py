@@ -22,13 +22,12 @@ def keyboard_inline():
 
 
 def keyboard_admin(bot, update):
-    '''
-    show the help icon for admin
+    '''Use the inline keyboard now.
     '''
     custom_keyboard = [['/maintenance']]
     # reply_markup = ReplyKeyboardMarkup(
     #     custom_keyboard, one_time_keyboard=True, selective=True)
-    reply_markup = ReplyKeyboardMarkup(custom_keyboard)
+    reply_markup = ReplyKeyboardMarkup(custom_keyboard, one_time_keyboard=True, selective=True)
 
     # cid = update.message.chat.id
     text = '<b>What\'s your choice?</b>'
