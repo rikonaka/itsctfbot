@@ -246,6 +246,8 @@ def message_process(bot, update, remove_caption=False, custom_caption=None):
     else:
         caption = custom_caption
 
+    print(message.text)
+
     if message:
         if message.chat.type == 'private':
             # only the admin allow the use the private chat or submission
