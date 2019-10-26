@@ -2,7 +2,7 @@
 
 这是一个喜欢骂人的404机器人
 
-## Want to add a new verb match?
+## Want to add a new verb match
 
 想要增加新的动词匹配？
 
