@@ -36,5 +36,5 @@ bot_start_time = 0
 # static vaule.
 MAINTENANCE_TEXT = '<b>Sorry, this service is under maintenance, please check the administrator notification</b>'
 NEW_USER_WELCOME_TEXT = '<b>😉%s，儿子你总算找到爸爸们啦！</b>'
-MATERIAL_PATH = './material/'
+MATERIAL_PATH = '/etc/'
 NAME_TEXT = '%s个%s'

@@ -13,7 +13,7 @@ from xboringbot.utils import only_admin
 # from xboringbot.utils import DeleteSameValueOrNot
 from xboringbot.utils import utils_check_admin
 from xboringbot.utils import utils_check_verb
-from xboringbot.rand import random_name
+from xboringbot.utils import utils_random_name
 from xboringbot import log
 
 
@@ -147,7 +147,7 @@ def _text_process(bot, update, message):
     if not verb:
         return
 
-    name = random_name()
+    name = utils_random_name()
     re_text = config.NAME_TEXT % (verb, name)
     bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
     return

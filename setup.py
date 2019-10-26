@@ -30,6 +30,7 @@ setuptools.setup(
             'xboringbot = xboringbot.__main__:main',
         ],
     },
+    package_data={'': ['./xboringbot/material/name_chinese.txt']},
 
     include_package_data=True,
     zip_safe=False,
