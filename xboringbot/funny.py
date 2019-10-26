@@ -15,7 +15,7 @@ def get_random_name():
     return random.choice(name_list)
 
 
-def check_verb(message):
+def check_verb(text):
 
     verb_list = [
         # a
@@ -31,6 +31,7 @@ def check_verb(message):
         '捶',
         '持',
         '擦',
+        '吃',
         # d
         '盯',
         '瞪',
@@ -46,6 +47,7 @@ def check_verb(message):
         '顾',
         '观',
         # h
+        '喝',
         # i
         # j
         '击',
@@ -61,6 +63,7 @@ def check_verb(message):
         # l
         '落',
         '搂',
+        '拉',
         # m
         '瞄',
         # n
@@ -86,6 +89,7 @@ def check_verb(message):
         '撕',
         '撒',
         '搜',
+        '睡',
         # t
         '眺',
         '推',
@@ -117,7 +121,7 @@ def check_verb(message):
     ]
 
     for c in verb_list:
-        if c in message:
+        if c in text:
             return c
 
     return None

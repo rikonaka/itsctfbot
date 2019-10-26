@@ -141,10 +141,12 @@ def _text_process(bot, update, message):
     '''
     cid = message.chat.id
 
-    print(message.text)
+    # print(message.text)
     verb = funny.check_verb(str(message.text).strip())
     if not verb:
         return
+
+    print(verb)
 
     name = funny.get_random_name()
     re_text = config.NAME_TEXT % (verb, name)
@@ -218,7 +220,7 @@ def _supergroup_chat_process(bot, update, message, caption):
 
 @run_async
 def _private_chat_process(bot, update, message, caption):
-    '''
+    '''Doing nothing here.
     '''
     return
 
@@ -245,7 +247,7 @@ def message_process(bot, update, remove_caption=False, custom_caption=None):
     else:
         caption = custom_caption
 
-    print(message.text)
+    # print(message.text)
 
     if message:
         if message.chat.type == 'private':
