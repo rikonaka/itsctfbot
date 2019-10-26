@@ -9,11 +9,10 @@ from telegram.ext.dispatcher import run_async
 
 from xboringbot import keyboards
 from xboringbot import config
+from xboringbot import funny
 from xboringbot.utils import only_admin
 # from xboringbot.utils import DeleteSameValueOrNot
 from xboringbot.utils import utils_check_admin
-from xboringbot.utils import utils_check_verb
-from xboringbot.utils import utils_random_name
 from xboringbot import log
 
 
@@ -143,11 +142,11 @@ def _text_process(bot, update, message):
     cid = message.chat.id
 
     print(message.text)
-    verb = utils_check_verb(str(message.text).strip())
+    verb = funny.check_verb(str(message.text).strip())
     if not verb:
         return
 
-    name = utils_random_name()
+    name = funny.get_random_name()
     re_text = config.NAME_TEXT % (verb, name)
     bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
     return

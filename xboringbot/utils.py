@@ -9,50 +9,6 @@ from telegram.ext.dispatcher import run_async
 from telegram import ParseMode
 
 
-def utils_random_verb():
-    path = config.MATERIAL_PATH + 'verb_chinese.txt'
-
-    verb_list = utils_get_line(path)
-    if not verb_list:
-        return None
-
-    return random.choice(verb_list)
-
-
-def utils_random_name():
-    path = config.MATERIAL_PATH + 'name_chinese.txt'
-
-    name_list = utils_get_line(path)
-    if not name_list:
-        return None
-
-    return random.choice(name_list)
-
-
-def utils_check_verb(message):
-    '''Check the message is contain the verb or not.
-
-    Args:
-        message(str).
-
-    Returns:
-        None.
-        result_str(str).
-    '''
-
-    path = config.MATERIAL_PATH + 'verb_chinese.txt'
-    verb_list = utils_get_line(path)
-    if not verb_list:
-        return None
-
-    else:
-        for v in verb_list:
-            if v in message:
-                return v
-
-    return None
-
-
 def utils_check_admin(update):
     '''Check the user is administrator or not.
 
