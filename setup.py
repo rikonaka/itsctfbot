@@ -27,7 +27,7 @@ setuptools.setup(
 
     entry_points={
         'console_scripts': [
-            'xboringbot = xboringbox.__main__:main',
+            'xboringbot = xboringbot.__main__:main',
         ],
     },
 
