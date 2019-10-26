@@ -142,6 +142,7 @@ def _text_process(bot, update, message):
     '''
     cid = message.chat.id
 
+    print(message.text)
     verb = utils_check_verb(str(message.text).strip())
     if not verb:
         return
