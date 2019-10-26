@@ -54,7 +54,8 @@ def command_user_help(bot, update):
     '''Show the help information for users.
     '''
 
-    keyboard = keyboards.keyboard_user(bot, update)
+    # keyboard = keyboards.keyboard_user(bot, update)
+    keyboard = keyboards.keyboard_inline()
 
     text = '叫爸爸干什么！'
     # update.message.reply_text(

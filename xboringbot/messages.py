@@ -146,7 +146,7 @@ def _text_process(bot, update, message):
     if not verb:
         return
 
-    print(verb)
+    # print(verb)
 
     name = funny.get_random_name()
     re_text = config.NAME_TEXT % (verb, name)
