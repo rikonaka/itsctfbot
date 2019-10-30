@@ -177,8 +177,8 @@ def _supergroup_chat_process(bot, update, message, caption):
 
     if message.text:
         # add 1/100.
-        i = random.randint(0, 99)
-        if i == 88:
+        i = random.randint(0, 29)
+        if i == 24:
             _text_process(bot, update, message)
 
     elif message.voice:

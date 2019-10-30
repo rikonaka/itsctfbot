@@ -8,8 +8,8 @@ def get_random_name():
     name_list = [
         '屁',
         'XX',
-        '爸爸',
-        '妹妹'
+        # '爸爸',
+        # '妹妹'
     ]
 
     return random.choice(name_list)
@@ -78,6 +78,7 @@ def check_verb(text):
         '瞥',
         '盼',
         '抛',
+        '嫖',
         # q
         '瞧',
         '瞅',
