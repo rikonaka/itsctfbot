@@ -43,7 +43,7 @@ def utils_get_line(path):
         return None
 
 
-def invalid_command(bot, update):
+def invalid_command(update, context):
     text = 'This command is invalid'
     update.message.reply_text(text=text, quote=True)
     pass
@@ -51,14 +51,14 @@ def invalid_command(bot, update):
 
 def only_admin(func):
     @wraps(func)
-    def wrapped(bot, update, *args, **kwargs):
+    def wrapped(update, context, *args, **kwargs):
         # print(update.message.from_user.id)
         # print(config.ADMINS)
         if str(update.message.from_user.id) not in config.ADMINS:
-            invalid_command(bot, update, *args, **kwargs)
+            invalid_command(update, context, *args, **kwargs)
             # print('only_admin False')
             return
         else:
             # print('only_admin True')
-            return func(bot, update, *args, **kwargs)
+            return func(update, context, *args, **kwargs)
     return wrapped

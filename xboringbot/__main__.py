@@ -28,7 +28,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-def error(bot, update, error):
+def error(update, context, error):
     logger.warning('Update %s caused error %s' % (update, error))
 
 
@@ -40,7 +40,8 @@ def main():
 
     config.bot_start_time = time.time()
 
-    updater = Updater(token=config.BOT_TOKEN)
+    updater = Updater(token=config.BOT_TOKEN, use_context=True)
+
     dp = updater.dispatcher
 
     # def stop_and_restart():
@@ -48,7 +49,7 @@ def main():
     #     updater.stop()
     #     os.execl(sys.executable, sys.executable, *sys.argv)
 
-    # def restart(bot, update):
+    # def restart(update, context):
     #     update.message.reply_text('Bot is restarting...')
     #     Thread(target=stop_and_restart).start()
 
@@ -56,7 +57,7 @@ def main():
     # dp.add_handler(MessageHandler(custom_filters.album,
     #                               albums.album_collect, pass_job_queue=True), 1)
     dp.add_handler(MessageHandler(
-        Filters.all, messages.message_process, edited_updates=True), 1)
+        Filters.all, messages.message_process), 1)
 
     '''Administrator commands'''
 

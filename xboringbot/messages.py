@@ -16,20 +16,20 @@ from xboringbot.utils import utils_check_admin
 from xboringbot import log
 
 
-def _other_process(bot, update, message):
+def _other_process(update, context):
     # text = 'Sorry, this kind of media is not supported yet'
     # text = 'Thanks'
     # message.reply_text(text=text, quote=True)
     return
 
 
-def _game_process(bot, update, message):
+def _game_process(update, context):
     # text = 'Sorry, telegram doesn't allow to echo this message'
     # message.reply_text(text=text, quote=True)
     return
 
 
-def _video_note_process(bot, update, message):
+def _video_note_process(update, context):
     # media = message.video_note.file_id
     # length = message.video_note.length
     # duration = message.video_note.duration
@@ -37,14 +37,14 @@ def _video_note_process(bot, update, message):
     return
 
 
-def _location_process(bot, update, message):
+def _location_process(update, context):
     # longitude = message.location.longitude
     # latitude = message.location.latitude
     # message.reply_location(latitude=latitude, longitude=longitude)
     return
 
 
-def _venue_process(bot, update, message):
+def _venue_process(update, context):
     # longitude = message.venue.location.longitude
     # latitude = message.venue.location.latitude
     # title = message.venue.title
@@ -54,7 +54,7 @@ def _venue_process(bot, update, message):
     return
 
 
-def _contact_process(bot, update, message):
+def _contact_process(update, context):
     # phone_number = message.contact.phone_number
     # first_name = message.contact.first_name
     # last_name = message.contact.last_name
@@ -64,7 +64,7 @@ def _contact_process(bot, update, message):
     return
 
 
-def _video_process(bot, update, message):
+def _video_process(update, context):
     # media = message.video.file_id
     # duration = message.video.duration
     # message.reply_video(video=media, duration=duration, caption=caption, parse_mode=ParseMode.HTML)
@@ -73,7 +73,7 @@ def _video_process(bot, update, message):
     return
 
 
-def _audio_process(bot, update, message):
+def _audio_process(update, context):
     # media = message.audio.file_id
     # duration = message.audio.duration
     # performer = message.audio.performer
@@ -84,7 +84,7 @@ def _audio_process(bot, update, message):
     return
 
 
-def _document_process(bot, update, message):
+def _document_process(update, context):
     # media = message.document.file_id
     # filename = message.document.file_name
     # message.reply_document(document=media, filename=filename, caption=caption, parse_mode=ParseMode.HTML)
@@ -93,20 +93,20 @@ def _document_process(bot, update, message):
     return
 
 
-def _animation_process(bot, update, message):
+def _animation_process(update, context):
     # for gif
     # re_text = '<b>Wow!</b>'
     # message.reply_text(text=re_text, parse_mode=ParseMode.HTML)
     return
 
 
-def _sticker_process(bot, update, message):
+def _sticker_process(update, context):
     # media = message.sticker.file_id
     # message.reply_sticker(sticker=media)
     return
 
 
-def _photo_process(bot, update, message):
+def _photo_process(update, context):
     '''
     '''
     # This is what the bot do now
@@ -123,7 +123,7 @@ def _photo_process(bot, update, message):
     return
 
 
-def _voice_process(bot, update, message):
+def _voice_process(update, context):
     '''
     '''
     # media = message.voice.file_id
@@ -136,28 +136,29 @@ def _voice_process(bot, update, message):
     return
 
 
-def _text_process(bot, update, message):
+def _text_process(update, context):
     '''Process the text.
     '''
-    cid = message.chat.id
+    cid = update.message.chat.id
 
     # print(message.text)
-    verb = funny.check_verb(str(message.text).strip())
+    verb = funny.check_verb(str(update.message.text).strip())
     if not verb:
         return
 
-    # print(verb)
-
     name = funny.get_random_name()
     re_text = config.NAME_TEXT % (verb, name)
-    bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
+    context.bot.send_message(chat_id=cid, text=re_text,
+                             parse_mode=ParseMode.HTML)
     return
 
 
-def _supergroup_chat_process(bot, update, message, caption):
+def _supergroup_chat_process(update, context):
     '''
     for normal user use
     '''
+
+    message = update.message
 
     if message.from_user:
         user_first_name = message.from_user.first_name
@@ -172,93 +173,73 @@ def _supergroup_chat_process(bot, update, message, caption):
         re_text = config.NEW_USER_WELCOME_TEXT % str(
             message.new_chat_members[0].first_name)
 
-        bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
+        context.bot.send_message(
+            chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
         return
 
     if message.text:
         # add 1/100.
         i = random.randint(0, 29)
         if i == 24:
-            _text_process(bot, update, message)
+            _text_process(update, context)
 
     elif message.voice:
-        _voice_process(bot, update, message)
+        _voice_process(update, context)
 
     elif message.photo:
-        _photo_process(bot, update, message)
+        _photo_process(update, context)
 
     elif message.sticker:
-        _sticker_process(bot, update, message)
+        _sticker_process(update, context)
 
     elif message.animation:
-        _animation_process(bot, update, message)
+        _animation_process(update, context)
 
     elif message.document:
-        _document_process(bot, update, message)
+        _document_process(update, context)
 
     elif message.audio:
-        _audio_process(bot, update, message)
+        _audio_process(update, context)
 
     elif message.video:
-        _video_process(bot, update, message)
+        _video_process(update, context)
 
     elif message.contact:
-        _contact_process(bot, update, message)
+        _contact_process(update, context)
 
     elif message.venue:
-        _venue_process(bot, update, message)
+        _venue_process(update, context)
 
     elif message.location:
-        _location_process(bot, update, message)
+        _location_process(update, context)
 
     elif message.video_note:
-        _video_note_process(bot, update, message)
+        _video_note_process(update, context)
 
     elif message.game:
-        _game_process(bot, update, message)
+        _game_process(update, context)
 
     else:
-        _other_process(bot, update, message)
+        _other_process(update, context)
 
 
 @run_async
-def _private_chat_process(bot, update, message, caption):
+def _private_chat_process(update, context):
     '''Doing nothing here.
     '''
     return
 
 
 @run_async
-def message_process(bot, update, remove_caption=False, custom_caption=None):
+def message_process(update, context):
 
-    if update.edited_message:
-        message = update.edited_message
-    elif remove_caption:
-        message = update.message.reply_to_message
-    elif custom_caption is not None:
-        message = update.message.reply_to_message
-    else:
-        message = update.message
-
-    if custom_caption is None:
-        # caption is message title.
-        try:
-            caption = message.caption_html if (
-                message.caption and remove_caption is False) else None
-        except AttributeError:
-            return
-    else:
-        caption = custom_caption
-
-    # print(message.text)
-
-    if message:
-        if message.chat.type == 'private':
+    if update.message:
+        if update.message.chat.type == 'private':
             # only the admin allow the use the private chat or submission
             # print('here')
-            _private_chat_process(bot, update, message, caption)
+            _private_chat_process(update, context)
 
-        elif message.chat.type == 'supergroup':
-            _supergroup_chat_process(bot, update, message, caption)
+        elif update.message.chat.type == 'supergroup':
+            _supergroup_chat_process(update, context)
     else:
         return

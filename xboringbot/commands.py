@@ -12,7 +12,6 @@ from xboringbot.utils import only_admin
 from xboringbot import messages
 from xboringbot import utils
 from xboringbot import config
-from xboringbot import log
 from xboringbot import keyboards
 from xboringbot import version
 
@@ -25,7 +24,7 @@ from telegram import TelegramError
 
 @run_async
 @only_admin
-def command_maintenance(bot, update):
+def command_maintenance(update, context):
 
     if config.maintenance_mode == False:
         config.maintenance_mode = True
@@ -39,7 +38,7 @@ def command_maintenance(bot, update):
 
 
 @run_async
-def command_bot_version(bot, update):
+def command_bot_version(update, context):
     current_version = version.version()
     start_time = config.bot_start_time
     end_time = time.time()
@@ -50,11 +49,11 @@ def command_bot_version(bot, update):
 
 
 @run_async
-def command_user_help(bot, update):
+def command_user_help(update, context):
     '''Show the help information for users.
     '''
 
-    # keyboard = keyboards.keyboard_user(bot, update)
+    # keyboard = keyboards.keyboard_user(update, context)
     keyboard = keyboards.keyboard_inline()
 
     text = '叫爸爸干什么！'
@@ -65,7 +64,7 @@ def command_user_help(bot, update):
 
 
 @run_async
-def command_ping(bot, update):
+def command_ping(update, context):
     '''for bot test.
     '''
     text = '再测试干你！'

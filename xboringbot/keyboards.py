@@ -21,7 +21,7 @@ def keyboard_inline():
     return keyboard
 
 
-def keyboard_admin(bot, update):
+def keyboard_admin(update, context):
     '''Use the inline keyboard now.
     '''
     custom_keyboard = [['/maintenance']]
@@ -37,7 +37,7 @@ def keyboard_admin(bot, update):
         text=text, parse_mode=ParseMode.HTML, reply_markup=reply_markup)
 
 
-def keyboard_user(bot, update):
+def keyboard_user(update, context):
 
     custom_keyboard = [['/help', '/ping', '/version']]
     reply_markup = ReplyKeyboardMarkup(
