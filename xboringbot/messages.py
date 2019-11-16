@@ -13,7 +13,6 @@ from xboringbot import funny
 from xboringbot.utils import only_admin
 # from xboringbot.utils import DeleteSameValueOrNot
 from xboringbot.utils import utils_check_admin
-from xboringbot import log
 
 
 def _other_process(update, context):
