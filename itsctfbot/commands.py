@@ -81,7 +81,7 @@ def command_check_flag_inline(update, context):
         username = update.inline_query.from_user.username
         correct_string = 'Good job!'
         username_with_correct_string = correct_string + ' ' + str(username)
-        results.append(InlineQueryResultArticle(id=uuid_me, title=correct_string, description=username_with_correct_string,
+        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_correct_string, description=correct_string,
                                                 input_message_content=InputTextMessageContent(correct_string, parse_mode=ParseMode.HTML)))
         try:
             update.inline_query.answer(
@@ -92,7 +92,7 @@ def command_check_flag_inline(update, context):
         username = update.inline_query.from_user.username
         not_correct_string = 'Sorry, %s your answer is not right!'
         username_with_not_correct_string = not_correct_string % str(username)
-        results.append(InlineQueryResultArticle(id=uuid_me, title=correct_string, description=username_with_not_correct_string,
+        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_not_correct_string, description=not_correct_string,
                                                 input_message_content=InputTextMessageContent(correct_string, parse_mode=ParseMode.HTML)))
         try:
             update.inline_query.answer(
