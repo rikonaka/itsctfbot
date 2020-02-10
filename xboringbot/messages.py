@@ -16,6 +16,19 @@ from xboringbot.utils import only_admin
 from xboringbot.utils import utils_check_admin
 
 
+def _flag_process(update, context):
+
+    number_string = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+
+    message = update.message
+    if message.text:
+        if 'flag' in message.text and message.text[0] in number_string:
+            if ctf_flag.check_flag(message.text):
+                update.message.reply_text(text='Good job!')
+            else:
+                update.message.reply_text(text='Not right!')
+
+
 def _other_process(update, context):
     # text = 'Sorry, this kind of media is not supported yet'
     # text = 'Thanks'
@@ -192,6 +205,10 @@ def _supergroup_chat_process(update, context):
         if config.debug_mode:
             _text_process(update, context)
             _text_process_pink(update, context)
+            
+        elif 'flag' in message.text:
+            _flag_process(update, context)
+
         else:
             i = random.randint(0, 29)
             if i == 24:
@@ -243,15 +260,7 @@ def _private_chat_process(update, context):
     '''Let the bot check the flag now.
     '''
 
-    number_string = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
-
-    message = update.message
-    if message.text:
-        if 'flag' in message.text and message.text[0] in number_string:
-            if ctf_flag.check_flag(message.text):
-                update.message.reply_text(text='Good job!')
-            else:
-                update.message.reply_text(text='Not right!')
+    _flag_process(update, context)
 
     return
 
