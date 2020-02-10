@@ -196,7 +196,6 @@ def _supergroup_chat_process(update, context):
             i = random.randint(0, 29)
             if i == 24:
                 _text_process(update, context)
-            elif i == 9:
                 _text_process_pink(update, context)
 
     elif message.voice:
