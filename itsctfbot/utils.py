@@ -3,7 +3,7 @@
 import random
 
 from functools import wraps
-from xboringbot import config
+from itsctfbot import config
 
 from telegram.ext.dispatcher import run_async
 from telegram import ParseMode

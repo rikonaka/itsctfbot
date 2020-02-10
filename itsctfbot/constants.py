@@ -2,7 +2,7 @@
 
 import sys
 
-from xboringbot import config
+from itsctfbot import config
 
 from telegram import Bot
 from telegram import TelegramError

@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
 import setuptools
-from xboringbot import version
+from itsctfbot import version
 
 current_version = version.version()
 
 setuptools.setup(
 
-    name='xboringbot',
+    name='itsctfbot',
 
     version=current_version,
 
     license='GPL-3.0',
 
     author='Riko',
-    author_email='nobody@gmail.com',
+    author_email='xxy1836@gmail.com',
 
     install_requires=[
         'python-telegram-bot',
@@ -22,15 +22,15 @@ setuptools.setup(
     ],
 
     packages=[
-        'xboringbot',
+        'itsctfbot',
     ],
 
     entry_points={
         'console_scripts': [
-            'xboringbot = xboringbot.__main__:main',
+            'itsctfbot = itsctfbot.__main__:main',
         ],
     },
-    package_data={'': ['./xboringbot/material/name_chinese.txt']},
+    # package_data={'': ['./itsctfbot/material/name_chinese.txt']},
 
     include_package_data=True,
     zip_safe=False,

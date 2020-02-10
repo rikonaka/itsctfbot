@@ -7,13 +7,13 @@ from telegram import ParseMode
 from telegram.ext import DispatcherHandlerStop
 from telegram.ext.dispatcher import run_async
 
-from xboringbot import keyboards
-from xboringbot import config
-from xboringbot import funny
-from xboringbot import ctf_flag
-from xboringbot.utils import only_admin
-# from xboringbot.utils import DeleteSameValueOrNot
-from xboringbot.utils import utils_check_admin
+from itsctfbot import keyboards
+from itsctfbot import config
+from itsctfbot import funny
+from itsctfbot import ctf_flag
+from itsctfbot.utils import only_admin
+# from itsctfbot.utils import DeleteSameValueOrNot
+from itsctfbot.utils import utils_check_admin
 
 
 def _flag_process(update, context):

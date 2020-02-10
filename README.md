@@ -6,9 +6,9 @@
 
 想要增加新的动词匹配？
 
-- Find the `funny.py` file under `xboringbot`, add new verbs according to the rules of the Python list, and submit it.
+- Find the `funny.py` file under `itsctfbot`, add new verbs according to the rules of the Python list, and submit it.
 
-- 找到`xboringbot`下`funny.py`文件，按照Python列表的规则添加新的动词进去，然后提交就可以了。
+- 找到`itsctfbot`下`funny.py`文件，按照Python列表的规则添加新的动词进去，然后提交就可以了。
 
 - Other questions about Python code to solve the problem yourself.
 

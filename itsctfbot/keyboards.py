@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from xboringbot import constants
-from xboringbot import config
+from itsctfbot import constants
+from itsctfbot import config
 
 from telegram import ParseMode
 from telegram import InlineKeyboardButton

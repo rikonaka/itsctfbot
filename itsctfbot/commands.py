@@ -8,14 +8,14 @@ from datetime import datetime
 from datetime import timedelta
 import uuid
 
-from xboringbot.utils import only_admin
-# from xboringbot import keyboards
-from xboringbot import messages
-from xboringbot import utils
-from xboringbot import config
-from xboringbot import keyboards
-from xboringbot import version
-from xboringbot import ctf_flag
+from itsctfbot.utils import only_admin
+# from itsctfbot import keyboards
+from itsctfbot import messages
+from itsctfbot import utils
+from itsctfbot import config
+from itsctfbot import keyboards
+from itsctfbot import version
+from itsctfbot import ctf_flag
 
 # from telegram import MessageEntity
 from telegram import ParseMode
@@ -106,7 +106,7 @@ def command_bot_version(update, context):
     current_version = version.version()
     start_time = config.bot_start_time
     end_time = time.time()
-    text = 'xboringbot driven by v%s code.\nUptime: %s.' % (
+    text = 'itsctfbot driven by v%s code.\nUptime: %s.' % (
         current_version, str(timedelta(seconds=int(end_time - start_time))))
     update.message.reply_text(
         text=text, parse_mode=ParseMode.HTML)

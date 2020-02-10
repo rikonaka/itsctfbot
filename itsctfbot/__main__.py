@@ -8,12 +8,12 @@ import os
 import time
 
 # files
-from xboringbot import config
-from xboringbot import commands
-from xboringbot import messages
-from xboringbot import utils
-from xboringbot import custom_filters
-from xboringbot import version
+from itsctfbot import config
+from itsctfbot import commands
+from itsctfbot import messages
+from itsctfbot import utils
+from itsctfbot import custom_filters
+from itsctfbot import version
 
 # use the python-telegram-bot lib
 from telegram.ext import Updater
@@ -36,7 +36,7 @@ def error(update, context, error):
 def main():
 
     current_version = version.version()
-    running_message = 'xboringbot: v%s\nrunning...' % current_version
+    running_message = 'itsctfbot: v%s\nrunning...' % current_version
     print(running_message)
 
     config.bot_start_time = time.time()
