@@ -6,6 +6,7 @@ import random
 import time
 from datetime import datetime
 from datetime import timedelta
+import uuid
 
 from xboringbot.utils import only_admin
 # from xboringbot import keyboards
@@ -21,6 +22,8 @@ from telegram import ParseMode
 # from telegram import constants as t_consts
 from telegram.ext.dispatcher import run_async
 from telegram import TelegramError
+from telegram import InlineQueryResultArticle
+from telegram import InputTextMessageContent
 
 
 @run_async
@@ -57,6 +60,45 @@ def command_debug(update, context):
         config.debug_mode = False
         text = '<b>Debug mode disabled</b>'
         update.message.reply_text(text=text, parse_mode=ParseMode.HTML)
+
+
+def command_check_flag_inline(update, context):
+    '''
+    '''
+
+    text = update.inline_query.query
+    text = text.strip()
+    if len(text) == 0:
+        return
+
+    if 'flag' not in text:
+        return
+
+    uuid_me = uuid.uuid4()
+    results = list()
+    if ctf_flag.check_flag(text):
+        # uid = update.inline_query.from_user.id
+        username = update.inline_query.from_user.username
+        correct_string = 'Good job!'
+        username_with_correct_string = correct_string + ' ' + str(username)
+        results.append(InlineQueryResultArticle(id=uuid_me, title=correct_string, description=username_with_correct_string,
+                                                input_message_content=InputTextMessageContent(correct_string, parse_mode=ParseMode.HTML)))
+        try:
+            update.inline_query.answer(
+                results, cache_time=60, is_personal=True)
+        except Exception:
+            pass
+    else:
+        username = update.inline_query.from_user.username
+        not_correct_string = 'Sorry, %s your answer is not right!'
+        username_with_not_correct_string = not_correct_string % str(username)
+        results.append(InlineQueryResultArticle(id=uuid_me, title=correct_string, description=username_with_not_correct_string,
+                                                input_message_content=InputTextMessageContent(correct_string, parse_mode=ParseMode.HTML)))
+        try:
+            update.inline_query.answer(
+                results, cache_time=60, is_personal=True)
+        except Exception:
+            pass
 
 
 @run_async

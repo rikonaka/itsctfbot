@@ -26,7 +26,7 @@ def _flag_process(update, context):
             if ctf_flag.check_flag(message.text):
                 update.message.reply_text(text='Good job!')
             else:
-                update.message.reply_text(text='Not right!')
+                update.message.reply_text(text='Sorry, your answer is not right!')
 
 
 def _other_process(update, context):
@@ -206,8 +206,8 @@ def _supergroup_chat_process(update, context):
             _text_process(update, context)
             _text_process_pink(update, context)
 
-        elif '@xboring_bot' in message.text and 'flag' in message.text:
-            print(message.text)
+        elif 'flag' in message.text:
+            # print(message.text)
             _flag_process(update, context)
 
         else:

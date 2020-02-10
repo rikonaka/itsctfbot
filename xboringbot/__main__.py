@@ -20,6 +20,7 @@ from telegram.ext import Updater
 from telegram.ext import Filters
 from telegram.ext import MessageHandler
 from telegram.ext import CommandHandler
+from telegram.ext import InlineQueryHandler
 
 # logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 #                    level=logging.INFO)
@@ -75,6 +76,9 @@ def main():
     dp.add_handler(CommandHandler('ping', commands.command_ping), 2)
     dp.add_handler(CommandHandler('version', commands.command_bot_version), 2)
     dp.add_handler(MessageHandler(Filters.command, utils.invalid_command), 2)
+
+    '''Add inline query handle.'''
+    dp.add_handler(InlineQueryHandler(commands.command_check_flag_inline))
 
     # handle errors
     dp.add_error_handler(error)
