@@ -56,6 +56,9 @@ def main():
     # job = updater.job_queue
     # dp.add_handler(MessageHandler(custom_filters.album,
     #                               albums.album_collect, pass_job_queue=True), 1)
+    job = updater.job_queue
+    job.run_repeating(
+        commands.job_load_flag, interval=6, first=0)
     dp.add_handler(MessageHandler(
         Filters.all, messages.message_process), 1)
 

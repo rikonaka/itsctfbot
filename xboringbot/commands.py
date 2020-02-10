@@ -14,12 +14,19 @@ from xboringbot import utils
 from xboringbot import config
 from xboringbot import keyboards
 from xboringbot import version
+from xboringbot import ctf_flag
 
 # from telegram import MessageEntity
 from telegram import ParseMode
 # from telegram import constants as t_consts
 from telegram.ext.dispatcher import run_async
 from telegram import TelegramError
+
+
+@run_async
+def job_load_flag(context):
+
+    ctf_flag.load_flag()
 
 
 @run_async
@@ -53,7 +60,7 @@ def command_user_help(update, context):
     '''Show the help information for users.
     '''
 
-    # keyboard = keyboards.keyboard_user(update, context)
+    # keyboard = keyboards.keyboard_user()
     keyboard = keyboards.keyboard_inline()
 
     text = '叫爸爸干什么！'

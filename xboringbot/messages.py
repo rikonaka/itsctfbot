@@ -10,6 +10,7 @@ from telegram.ext.dispatcher import run_async
 from xboringbot import keyboards
 from xboringbot import config
 from xboringbot import funny
+from xboringbot import ctf_flag
 from xboringbot.utils import only_admin
 # from xboringbot.utils import DeleteSameValueOrNot
 from xboringbot.utils import utils_check_admin
@@ -135,6 +136,16 @@ def _voice_process(update, context):
     return
 
 
+def _text_process_pink(update, context):
+
+    cid = update.message.chat.id
+
+    re_text = funny.get_random_pink_quotes()
+    context.bot.send_message(chat_id=cid, text=re_text,
+                             parse_mode=ParseMode.HTML)
+    return
+
+
 def _text_process(update, context):
     '''Process the text.
     '''
@@ -181,6 +192,8 @@ def _supergroup_chat_process(update, context):
         i = random.randint(0, 29)
         if i == 24:
             _text_process(update, context)
+        elif i == 9:
+            _text_process_pink(update, context)
 
     elif message.voice:
         _voice_process(update, context)
@@ -224,8 +237,19 @@ def _supergroup_chat_process(update, context):
 
 @run_async
 def _private_chat_process(update, context):
-    '''Doing nothing here.
+    '''Let the bot check the flag now.
     '''
+
+    number_string = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
+
+    message = update.message
+    if message.text:
+        if 'flag' in message.text and message.text[0] in number_string:
+            if ctf_flag.check_flag(message.text):
+                update.message.reply_text(text='Good job!')
+            else:
+                update.message.reply_text(text='Not right!')
+
     return
 
 

@@ -21,26 +21,27 @@ def keyboard_inline():
     return keyboard
 
 
-def keyboard_admin(update, context):
+def keyboard_admin():
     '''Use the inline keyboard now.
     '''
     custom_keyboard = [['/maintenance']]
     # reply_markup = ReplyKeyboardMarkup(
     #     custom_keyboard, one_time_keyboard=True, selective=True)
-    reply_markup = ReplyKeyboardMarkup(custom_keyboard, one_time_keyboard=True, selective=True)
+    keyboard = ReplyKeyboardMarkup(custom_keyboard, one_time_keyboard=True, selective=True)
 
     # cid = update.message.chat.id
-    text = '<b>What\'s your choice?</b>'
+    # text = '<b>What\'s your choice?</b>'
     # bot.send_message(chat_id=cid, text=text,
     #                  parse_mode=ParseMode.HTML, reply_markup=reply_markup)
-    update.message.reply_text(
-        text=text, parse_mode=ParseMode.HTML, reply_markup=reply_markup)
+    # update.message.reply_text(
+    #     text=text, parse_mode=ParseMode.HTML, reply_markup=reply_markup)
+    return keyboard
 
 
-def keyboard_user(update, context):
+def keyboard_user():
 
     custom_keyboard = [['/help', '/ping', '/version']]
-    reply_markup = ReplyKeyboardMarkup(
+    keyboard = ReplyKeyboardMarkup(
         custom_keyboard, one_time_keyboard=True, selective=True)
 
-    return reply_markup
+    return keyboard

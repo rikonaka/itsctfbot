@@ -3,11 +3,29 @@
 import random
 
 
+def get_random_pink_quotes():
+
+    pink_quotes_list = [
+        '你行你上啊！',
+        '如果你觉得这个国家黑暗，那你就去当公务员改变这个国家啊！',
+        'GFW是为了保护我们中国人的思维不受你们西方宣传机构洗脑才存在的！',
+        '我和我的祖国一刻也不能分离！',
+        '你就是个牧羊犬！',
+        '要相信政府相信党！',
+        '多难兴邦！',
+        '厉害了我的国！',
+        '打倒美帝国主义！',
+    ]
+
+    return random.choice(pink_quotes_list)
+
+
 def get_random_name():
 
     name_list = [
         '屁',
         'XX',
+        'shi',
         # '爸爸',
         # '妹妹'
     ]
