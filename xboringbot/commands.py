@@ -33,14 +33,29 @@ def job_load_flag(context):
 @only_admin
 def command_maintenance(update, context):
 
-    if config.maintenance_mode == False:
-        config.maintenance_mode = True
+    if config.debug_mode == False:
+        config.debug_mode = True
         text = '<b>Maintenance mode enabled</b>'
         update.message.reply_text(text=text, parse_mode=ParseMode.HTML)
 
-    elif config.maintenance_mode == True:
-        config.maintenance_mode = False
+    elif config.debug_mode == True:
+        config.debug_mode = False
         text = '<b>Maintenance mode disabled</b>'
+        update.message.reply_text(text=text, parse_mode=ParseMode.HTML)
+
+
+@run_async
+@only_admin
+def command_debug(update, context):
+
+    if config.debug_mode == False:
+        config.debug_mode = True
+        text = '<b>Debug mode enabled</b>'
+        update.message.reply_text(text=text, parse_mode=ParseMode.HTML)
+
+    elif config.debug_mode == True:
+        config.debug_mode = False
+        text = '<b>Debug mode disabled</b>'
         update.message.reply_text(text=text, parse_mode=ParseMode.HTML)
 
 

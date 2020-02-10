@@ -66,6 +66,8 @@ def main():
 
     dp.add_handler(CommandHandler('maintenance',
                                   commands.command_maintenance), 2)
+    dp.add_handler(CommandHandler('debug',
+                                  commands.command_debug), 2)
 
     '''User's command'''
 

@@ -189,11 +189,15 @@ def _supergroup_chat_process(update, context):
 
     if message.text:
         # add 1/100.
-        i = random.randint(0, 29)
-        if i == 24:
+        if config.debug_mode:
             _text_process(update, context)
-        elif i == 9:
             _text_process_pink(update, context)
+        else:
+            i = random.randint(0, 29)
+            if i == 24:
+                _text_process(update, context)
+            elif i == 9:
+                _text_process_pink(update, context)
 
     elif message.voice:
         _voice_process(update, context)

@@ -30,11 +30,12 @@ ERROR_LOG = conf['error_log_location']
 # default is False now.
 # you should turn it off while the bot runing.
 maintenance_mode = False
+debug_mode = False
 # the int time stamp.
 bot_start_time = 0
 
 # static vaule.
 MAINTENANCE_TEXT = '<b>Sorry, this service is under maintenance, please check the administrator notification</b>'
-NEW_USER_WELCOME_TEXT = '<b>😉%s，儿子你总算找到爸爸们啦！</b>'
+NEW_USER_WELCOME_TEXT = '<b>😉%s，花姑娘？</b>'
 MATERIAL_PATH = '/etc/'
 NAME_TEXT = '%s个%s'
