@@ -76,25 +76,38 @@ def command_check_flag_inline(update, context):
 
     uuid_me = uuid.uuid4()
     results = list()
-    if ctf_flag.check_flag(text):
-        # uid = update.inline_query.from_user.id
-        username = update.inline_query.from_user.username
-        correct_string = 'Good job!'
-        username_with_correct_string = correct_string + ' ' + str(username)
-        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_correct_string, description=correct_string,
-                                                input_message_content=InputTextMessageContent(correct_string, parse_mode=ParseMode.HTML)))
+    username = update.inline_query.from_user.username
+    if not username:
+        uid = update.inline_query.from_user.id
+        sorry_string = 'Sorry'
+        not_allow_use_string = '%s, your are not allowed to use this system.' % str(
+            uid)
+        results.append(InlineQueryResultArticle(id=uuid_me, title=sorry_string, description=not_allow_use_string,
+                                                input_message_content=InputTextMessageContent(
+                                                    not_allow_use_string, parse_mode=ParseMode.HTML)))
         try:
             update.inline_query.answer(
                 results, cache_time=60, is_personal=True)
         except Exception:
             pass
+
+    elif ctf_flag.check_flag(text):
+        title_string = 'Your answer is right!'
+        correct_string = 'Good job!'
+        username_with_correct_string = correct_string + ' ' + str(username)
+        results.append(InlineQueryResultArticle(id=uuid_me, title=title_string, description=username_with_correct_string,
+                                                input_message_content=InputTextMessageContent(username_with_correct_string, parse_mode=ParseMode.HTML)))
+        try:
+            update.inline_query.answer(
+                results, cache_time=60, is_personal=True)
+        except Exception:
+            pass
+
     else:
-        username = update.inline_query.from_user.username
-        not_correct_string = 'Sorry, %s your answer is not right!'
+        title_string = 'Sorry, your answer is not right!'
         your_answer = 'Your answer: %s' % text
-        username_with_not_correct_string = not_correct_string % str(username)
-        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_not_correct_string, description=your_answer,
-                                                input_message_content=InputTextMessageContent(your_answer, parse_mode=ParseMode.HTML)))
+        results.append(InlineQueryResultArticle(id=uuid_me, title=title_string, description=your_answer,
+                                                input_message_content=InputTextMessageContent(title_string, parse_mode=ParseMode.HTML)))
         try:
             update.inline_query.answer(
                 results, cache_time=60, is_personal=True)
