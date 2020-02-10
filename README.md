@@ -1,6 +1,6 @@
-# xboring bot
+# itsctfbot
 
-这是一个喜欢骂人的404机器人
+这是一个喜欢骂人和顺便检测flag正确性的404机器人
 
 ## Want to add a new verb match
 

@@ -15,7 +15,7 @@ def keyboard_inline():
 
     button1 = InlineKeyboardButton(
         text='Source code',
-        url='https://github.com/rikonaka/xboring-bot.git')
+        url='https://github.com/rikonaka/itsctfbot.git')
     buttons_list = [[button0, button1]]
     keyboard = InlineKeyboardMarkup(buttons_list)
     return keyboard
