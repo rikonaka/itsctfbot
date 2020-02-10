@@ -205,8 +205,9 @@ def _supergroup_chat_process(update, context):
         if config.debug_mode:
             _text_process(update, context)
             _text_process_pink(update, context)
-            
-        elif 'flag' in message.text:
+
+        elif '@xboring_bot' in message.text and 'flag' in message.text:
+            print(message.text)
             _flag_process(update, context)
 
         else:
