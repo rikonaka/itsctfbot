@@ -91,9 +91,10 @@ def command_check_flag_inline(update, context):
     else:
         username = update.inline_query.from_user.username
         not_correct_string = 'Sorry, %s your answer is not right!'
+        your_answer = 'Your answer: %s' % text
         username_with_not_correct_string = not_correct_string % str(username)
-        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_not_correct_string, description=not_correct_string,
-                                                input_message_content=InputTextMessageContent(not_correct_string, parse_mode=ParseMode.HTML)))
+        results.append(InlineQueryResultArticle(id=uuid_me, title=username_with_not_correct_string, description=your_answer,
+                                                input_message_content=InputTextMessageContent(your_answer, parse_mode=ParseMode.HTML)))
         try:
             update.inline_query.answer(
                 results, cache_time=60, is_personal=True)
