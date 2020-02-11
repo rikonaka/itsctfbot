@@ -159,12 +159,13 @@ def _delete_process(update, context):
 
     first_name = update.message.from_user.first_name
 
-    if not cid or not mid or not text:
+    if not cid or not mid or not text or not first_name:
         return
 
     if '考' in text or '404' in first_name:
         re_text = '再逼逼干你信不信！'
-        context.bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
+        context.bot.send_message(
+            chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
         sleep(5)
         context.bot.delete_message(chat_id=cid, message_id=mid)
 
@@ -224,7 +225,8 @@ def _supergroup_chat_process(update, context):
 
     if message.text:
         # add 1/100.
-        must_
+        _delete_process(update, context)
+
         if config.debug_mode:
             _text_process(update, context)
             _text_process_pink(update, context)
