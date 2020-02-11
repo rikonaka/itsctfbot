@@ -156,8 +156,13 @@ def _delete_process(update, context):
     cid = update.message.chat.id
     mid = update.message.message_id
     text = update.message.text
-
     first_name = update.message.from_user.first_name
+
+    print(cid)
+    print(mid)
+    print(text)
+    print(first_name)
+    print(update.message.from_user)
 
     if not cid or not mid or not text or not first_name:
         return
