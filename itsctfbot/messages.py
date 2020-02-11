@@ -2,6 +2,7 @@
 
 import datetime
 import random
+from time import sleep
 
 from telegram import ParseMode
 from telegram.ext import DispatcherHandlerStop
@@ -26,7 +27,8 @@ def _flag_process(update, context):
             if ctf_flag.check_flag(message.text):
                 update.message.reply_text(text='Good job!')
             else:
-                update.message.reply_text(text='Sorry, your answer is not right!')
+                update.message.reply_text(
+                    text='Sorry, your answer is not right!')
 
 
 def _other_process(update, context):
@@ -149,6 +151,26 @@ def _voice_process(update, context):
     return
 
 
+def _delete_process(update, context):
+
+    cid = update.message.chat.id
+    mid = update.messge.message_id
+    text = update.message.text
+
+    first_name = update.message.from_user.first_name
+
+    if not cid or not mid or not text:
+        return
+
+    if '考' in text or '404' in first_name:
+        re_text = '再逼逼干你信不信！'
+        context.bot.send_message(chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
+        sleep(5)
+        context.bot.delete_message(chat_id=cid, message_id=mid)
+
+    return
+
+
 def _text_process_pink(update, context):
 
     cid = update.message.chat.id
@@ -202,6 +224,7 @@ def _supergroup_chat_process(update, context):
 
     if message.text:
         # add 1/100.
+        must_
         if config.debug_mode:
             _text_process(update, context)
             _text_process_pink(update, context)
