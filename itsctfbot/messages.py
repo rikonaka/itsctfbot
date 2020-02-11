@@ -167,12 +167,15 @@ def _delete_process(update, context):
 
     if '考' in text or '404' in first_name or 'yunxia' in username:
         re_text = '再逼逼干你信不信！'
+        if '404' in first_name or 'yunxia' in username:
+            re_text = '404, ' + re_text
+            
         try:
             context.bot.send_message(
                 chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
         except Exception:
             pass
-        sleep(5)
+        sleep(6)
         try:
             context.bot.delete_message(chat_id=cid, message_id=mid)
         except Exception:
