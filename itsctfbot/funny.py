@@ -3,6 +3,20 @@
 import random
 
 
+def get_404():
+
+    x_list = [
+        '再逼逼干你！',
+        '你懂个屁！',
+        '食屎啦你！',
+        '说个屁死处男！',
+        '今天没去陪你女朋友过六十大寿？',
+        '放屁！',
+        '信不信打得你做梦都拄拐！',
+    ]
+
+    return random.choice(x_list)
+
 def get_random_pink_quotes():
 
     pink_quotes_list = [

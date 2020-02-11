@@ -168,7 +168,7 @@ def _delete_process(update, context):
         return
 
     if '404' in first_name or 'yunxia' in username:
-        re_text = '再逼逼干你信不信！'
+        re_text = funny.get_404()
         re_text = '404, ' + re_text
 
         try:
@@ -178,7 +178,7 @@ def _delete_process(update, context):
             pass
 
     if '考' in text:
-        re_text = '干你了啊！'
+        re_text = '关门放404！'
         try:
             context.bot.send_message(
                 chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
