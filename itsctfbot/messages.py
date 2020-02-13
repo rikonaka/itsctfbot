@@ -179,7 +179,7 @@ def _delete_process(update, context):
                 except Exception:
                     pass
 
-    if '考' in text:
+    if '考' in text or '分数' in text:
         re_text = '关门放404！'
         try:
             context.bot.send_message(
