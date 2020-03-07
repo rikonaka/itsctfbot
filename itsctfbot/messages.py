@@ -168,16 +168,16 @@ def _delete_process(update, context):
         return
 
     if '404' in first_name or 'yunxia' in username:
-        for i in random.randint(0, 100):
-            if i == 99:
-                re_text = funny.get_404()
-                re_text = '404, ' + re_text
+        i = random.randint(0, 100)
+        if i == 99:
+            re_text = funny.get_404()
+            re_text = '404, ' + re_text
 
-                try:
-                    context.bot.send_message(
-                        chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
-                except Exception:
-                    pass
+            try:
+                context.bot.send_message(
+                    chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
+            except Exception:
+                pass
 
     if '考' in text or '分数' in text:
         re_text = '关门放404！'
