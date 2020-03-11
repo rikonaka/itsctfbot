@@ -173,26 +173,16 @@ def _delete_process(update, context):
             re_text = funny.get_404()
             re_text = '404, ' + re_text
 
-            try:
-                context.bot.send_message(
-                    chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
-            except Exception:
-                pass
-
-    if '考' in text or '分数' in text:
-        re_text = '关门放404！'
-        try:
             context.bot.send_message(
                 chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
-        except Exception:
-            pass
+
+    if '考' in text or '分数' in text:
+        re_text = '说个屁！'
+        context.bot.send_message(
+            chat_id=cid, text=re_text, parse_mode=ParseMode.HTML)
         sleep(6)
-        try:
-            # context.bot.delete_message(chat_id=cid, message_id=mid)
-            context.bot.edit_message_text(chat_id=cid, message_id=mid, text=funny.get_404())
-        except Exception:
-            context.bot.delete_message(chat_id=cid, message_id=mid)
-            pass
+        context.bot.delete_message(chat_id=cid, message_id=mid)
+        # context.bot.edit_message_text(chat_id=cid, message_id=mid, text=funny.get_404())
 
     return
 
