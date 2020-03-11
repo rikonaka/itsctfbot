@@ -188,7 +188,8 @@ def _delete_process(update, context):
             pass
         sleep(6)
         try:
-            context.bot.delete_message(chat_id=cid, message_id=mid)
+            # context.bot.delete_message(chat_id=cid, message_id=mid)
+            context.bot.edit_message_text(chat_id=cid, message_id=mid, text=funny.get_404())
         except Exception:
             pass
 
