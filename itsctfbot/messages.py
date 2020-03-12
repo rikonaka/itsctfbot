@@ -167,9 +167,9 @@ def _delete_process(update, context):
     if not text or not first_name or not username:
         return
 
-    if '404' in first_name or 'yunxia' in username:
-        i = random.randint(0, 100)
-        if i == 99:
+    if '404' in first_name:
+        i = random.randint(0, 10)
+        if i == 4:
             re_text = funny.get_404()
             re_text = '404, ' + re_text
 
@@ -189,10 +189,11 @@ def _delete_process(update, context):
 
 def _text_process_pink(update, context):
 
-    cid = update.message.chat.id
-
-    re_text = funny.get_random_pink_quotes()
-    context.bot.send_message(chat_id=cid, text=re_text,
+    i = random.randint(0, 10)
+    if i == 4:
+        cid = update.message.chat.id
+        re_text = funny.get_random_pink_quotes()
+        context.bot.send_message(chat_id=cid, text=re_text,
                              parse_mode=ParseMode.HTML)
     return
 
@@ -200,17 +201,19 @@ def _text_process_pink(update, context):
 def _text_process(update, context):
     '''Process the text.
     '''
-    cid = update.message.chat.id
+    i = random.randint(0, 10)
+    if i == 4:
+        cid = update.message.chat.id
 
-    # print(message.text)
-    verb = funny.check_verb(str(update.message.text).strip())
-    if not verb:
-        return
+        # print(message.text)
+        verb = funny.check_verb(str(update.message.text).strip())
+        if not verb:
+            return
 
-    name = funny.get_random_name()
-    re_text = config.NAME_TEXT % (verb, name)
-    context.bot.send_message(chat_id=cid, text=re_text,
-                             parse_mode=ParseMode.HTML)
+        name = funny.get_random_name()
+        re_text = config.NAME_TEXT % (verb, name)
+        context.bot.send_message(chat_id=cid, text=re_text,
+                                parse_mode=ParseMode.HTML)
     return
 
 
@@ -242,19 +245,12 @@ def _supergroup_chat_process(update, context):
         # add 1/100.
         _delete_process(update, context)
 
-        if config.debug_mode:
-            _text_process(update, context)
-            _text_process_pink(update, context)
+        _text_process(update, context)
+        _text_process_pink(update, context)
 
-        elif 'flag' in message.text:
+        if 'flag' in message.text:
             # print(message.text)
             _flag_process(update, context)
-
-        else:
-            i = random.randint(0, 29)
-            if i == 24:
-                _text_process(update, context)
-                _text_process_pink(update, context)
 
     elif message.voice:
         _voice_process(update, context)
