@@ -44,7 +44,7 @@ def utils_get_line(path):
 
 
 def invalid_command(update, context):
-    text = 'This command is invalid'
+    text = 'this command is invalid'
     update.message.reply_text(text=text, quote=True)
     pass
 
@@ -52,13 +52,8 @@ def invalid_command(update, context):
 def only_admin(func):
     @wraps(func)
     def wrapped(update, context, *args, **kwargs):
-        # print(update.message.from_user.id)
-        # print(config.ADMINS)
         if str(update.message.from_user.id) not in config.ADMINS:
             invalid_command(update, context, *args, **kwargs)
-            # print('only_admin False')
-            return
         else:
-            # print('only_admin True')
             return func(update, context, *args, **kwargs)
     return wrapped

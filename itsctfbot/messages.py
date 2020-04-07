@@ -245,8 +245,8 @@ def _supergroup_chat_process(update, context):
         # add 1/100.
         _delete_process(update, context)
 
-        _text_process(update, context)
-        _text_process_pink(update, context)
+        # _text_process(update, context)
+        # _text_process_pink(update, context)
 
         if 'flag' in message.text:
             # print(message.text)
